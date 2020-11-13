@@ -72,20 +72,20 @@ contract Challange3 is Ownable{
    
     enum taskStatus{
         DOESNOTEXIT,
-        Incomplete,
-        Completed
+        INCOMPLETE,
+        COMPLETED
     }
     
     mapping(string => taskStatus) public toDoList;
     
     function AddTasks(string memory task) public  onlyOwner{
         
-      toDoList[task] = taskStatus.Incomplete;
+      toDoList[task] = taskStatus.INCOMPLETE;
     }
     
     function taskCompleted(string memory task) public onlyOwner{
-        require(toDoList[task]==taskStatus.Incomplete,"Task does not Exist or is already Completed");
-        toDoList[task] = taskStatus.Completed;
+        require(toDoList[task]==taskStatus.INCOMPLETE,"Task does not Exist or is already Completed");
+        toDoList[task] = taskStatus.COMPLETED;
     }
     
 }
